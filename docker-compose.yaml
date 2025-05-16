@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend  # Path to your React app
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - "5173:5173"  # Expose port 3000 (host) to 80 (container)
+    volumes:
+      - /app/node_modules
+      - ./frontend/:/app
+
+  backend:
+    build:
+      context: ./backend  # Path to your FastAPI app
+      dockerfile: Dockerfile.dev
+    container_name: backend
+    volumes:
+      - ./backend/:/app
+    ports:
+      - "8000:8000"  # Expose port 8000 (host) to 8000 (container)
+    environment:
+      - TIP_AI_VIRTUAL_KEY=sk-8TzEM3tVNH95RJfD8FRrFg
+      - TIP_AI_URL=https://llmgw.codefest2025.marriott.com/v1/embeddings?model=cohere.embed-english-v3
+      - MODEL=xyz 
+
+  nginx:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+        - '80:80'
+    depends_on:
+      - frontend
+      - backend    

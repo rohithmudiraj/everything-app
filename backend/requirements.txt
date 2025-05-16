@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pandas
+faiss-cpu
+python-dotenv
+requests
+numpy
+tiktoken
+openpyxl
