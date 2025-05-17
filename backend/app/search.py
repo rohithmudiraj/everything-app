@@ -1,6 +1,5 @@
 import faiss
 import numpy as np
-import os
 
 #responsible for indexing data to fiass db and querying it
 class SemanticSearch:

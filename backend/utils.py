@@ -42,7 +42,7 @@ def truncate_text(text, max_chars=8000):
 
 def generate_embeddings_safely(texts,input_type):
     all_embeddings = []
-    chunk_size = 60  # Cohere model limit
+    chunk_size = 96 # Cohere model limit
     model_id="cohere.embed-english-v3"
     for batch in chunk_list(texts, chunk_size):
         # Truncate any long text in batch
@@ -57,8 +57,6 @@ def generate_embeddings_safely(texts,input_type):
 def create_cohere_embeddings(text,input_type="search_document"):
     url=TIP_AI_URL
     api_key=TIP_AI_VIRTUAL_KEY
-    print(url,api_key)
-    print(text)
     headers = {
         'x-goog-api-key': api_key,
         'Content-Type': 'application/json'
