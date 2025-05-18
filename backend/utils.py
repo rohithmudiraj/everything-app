@@ -57,6 +57,7 @@ def generate_embeddings_safely(texts,input_type):
 def create_cohere_embeddings(text,input_type="search_document"):
     url=TIP_AI_URL
     api_key=TIP_AI_VIRTUAL_KEY
+    print(text)
     headers = {
         'x-goog-api-key': api_key,
         'Content-Type': 'application/json'
