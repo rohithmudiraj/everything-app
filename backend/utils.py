@@ -42,7 +42,7 @@ def truncate_text(text, max_chars=8000):
 
 def generate_embeddings_safely(texts,input_type):
     all_embeddings = []
-    chunk_size = 96 # Cohere model limit
+    chunk_size = 70 # Cohere model limit
     model_id="cohere.embed-english-v3"
     for batch in chunk_list(texts, chunk_size):
         # Truncate any long text in batch
